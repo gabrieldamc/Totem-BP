@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.852
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BP_LKPortal", "BP_LKPortal\BP_LKPortal.csproj", "{393854D2-FC4F-4216-80CE-50C8E8BB82CD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{393854D2-FC4F-4216-80CE-50C8E8BB82CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{393854D2-FC4F-4216-80CE-50C8E8BB82CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{393854D2-FC4F-4216-80CE-50C8E8BB82CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{393854D2-FC4F-4216-80CE-50C8E8BB82CD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F235267E-AA44-4E55-B656-E5090D45BD89}
+	EndGlobalSection
+EndGlobal
