@@ -49,3 +49,4 @@ C:\Users\gabri\repo\mygitrepo\totem-bp\BP_LKPortal\obj\Debug\BP_LKPortal.csproj.
 C:\Users\gabri\repo\mygitrepo\totem-bp\BP_LKPortal\obj\Debug\BP_LKPortal.csproj.CopyComplete
 C:\Users\gabri\repo\mygitrepo\totem-bp\BP_LKPortal\obj\Debug\BP_LK_Screen.exe
 C:\Users\gabri\repo\mygitrepo\totem-bp\BP_LKPortal\obj\Debug\BP_LK_Screen.pdb
+C:\Users\gabri\repo\mygitrepo\totem-bp\BP_LKPortal\obj\Debug\BP_LKPortal.csprojAssemblyReference.cache
