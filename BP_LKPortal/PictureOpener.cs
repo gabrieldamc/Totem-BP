@@ -15,7 +15,7 @@ namespace BP_LKPortal
         public PictureOpener(string JPGFile)
         {
             InitializeComponent();
-            pictureBox1.Load(JPGFile);
+            pictureBox1.Load(JPGFile);            
             this.ShowInTaskbar = false;
         }
 
