@@ -37,6 +37,7 @@ C:\Users\gabri\repo\mygitrepo\totem-bp\BP_LKPortal\bin\Debug\Syncfusion.Tools.Wi
 C:\Users\gabri\repo\mygitrepo\totem-bp\BP_LKPortal\bin\Debug\TotemTools.dll
 C:\Users\gabri\repo\mygitrepo\totem-bp\BP_LKPortal\bin\Debug\EnvDTE.dll
 C:\Users\gabri\repo\mygitrepo\totem-bp\BP_LKPortal\bin\Debug\stdole.dll
+C:\Users\gabri\repo\mygitrepo\totem-bp\BP_LKPortal\obj\Debug\BP_LKPortal.csprojAssemblyReference.cache
 C:\Users\gabri\repo\mygitrepo\totem-bp\BP_LKPortal\obj\Debug\BP_LKPortal.CaptureWebCamcs.resources
 C:\Users\gabri\repo\mygitrepo\totem-bp\BP_LKPortal\obj\Debug\BP_LKPortal.CloseApplication.resources
 C:\Users\gabri\repo\mygitrepo\totem-bp\BP_LKPortal\obj\Debug\BP_LKPortal.Main.resources
@@ -49,4 +50,3 @@ C:\Users\gabri\repo\mygitrepo\totem-bp\BP_LKPortal\obj\Debug\BP_LKPortal.csproj.
 C:\Users\gabri\repo\mygitrepo\totem-bp\BP_LKPortal\obj\Debug\BP_LKPortal.csproj.CopyComplete
 C:\Users\gabri\repo\mygitrepo\totem-bp\BP_LKPortal\obj\Debug\BP_LK_Screen.exe
 C:\Users\gabri\repo\mygitrepo\totem-bp\BP_LKPortal\obj\Debug\BP_LK_Screen.pdb
-C:\Users\gabri\repo\mygitrepo\totem-bp\BP_LKPortal\obj\Debug\BP_LKPortal.csprojAssemblyReference.cache

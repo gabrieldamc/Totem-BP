@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Drawing.Printing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BP_LKPortal
@@ -19,12 +13,10 @@ namespace BP_LKPortal
             InitializeComponent();
             pdfViewerControl1.Load(PDFFile);
         }
-
         private void Btn_Close_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void Btn_Print_Click(object sender, EventArgs e)
         {
             PanelPrint.Visible = true;
@@ -38,41 +30,23 @@ namespace BP_LKPortal
                     printersList.Add(printer);
                 }
                 dialog.AllowPrintToFile = true;
-
                 dialog.AllowSomePages = true;
-
                 dialog.AllowCurrentPage = true;
-
                 dialog.Document = pdfViewerControl1.PrintDocument;
-
                 string printername = settings.PrinterName;
-
                 foreach (string print in printersList)
-
                 {
-
                     if (print.ToUpper().Contains("IMPRESSORASGA"))
-
                     {
-
                         printername = print; break;
-
                     }
-
                 }
-
                 if (printername == "")
-
                 {
-
                     printername = printersList[0];
-
                 }
-
                 dialog.Document.PrinterSettings.PrinterName = printername;
-
                 dialog.Document.Print();
-
                 pages = pdfViewerControl1.PageCount.ToString();
                 Variaveis.PrintUrl(pages);
             }
