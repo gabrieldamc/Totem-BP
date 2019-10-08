@@ -18,7 +18,8 @@ namespace BP_LKPortal
         public HtmlDocument Doc_ifreme;
         private static readonly TotemTools.InterceptKeys.LowLevelKeyboardProc _proc = HookCallback;
         private static IntPtr _hookID = IntPtr.Zero;
-        string fullPath = AppDomain.CurrentDomain.BaseDirectory;
+        string fullPath = AppDomain.CurrentDomain.BaseDirectory;       
+
         [DllImport("user32.dll")]
         public static extern int FindWindow(string lpClassName, string lpWindowName);
         [DllImport("user32.dll")]
@@ -39,13 +40,13 @@ namespace BP_LKPortal
        
         public WebBrowser(System.Windows.Forms.WebBrowser wb)
         {
-            InitializeComponent();
+            InitializeComponent();            
             this.panel1.Controls.Add(wb);
             this.wb = wb;
             this.wb.DocumentCompleted += webBrowser1_DocumentCompleted;
             this.wb.NewWindow += Wb_NewWindow;
             Enviar_Para_Home.Enabled = true;
-            wb.ScriptErrorsSuppressed = true;
+            wb.ScriptErrorsSuppressed = true;           
             extendedWebBrowser();
             SetBrowserFeatureControl();
             adrBarTextBox.Text = (wb.Url != null) ? wb.Url.ToString() : "";
@@ -55,34 +56,10 @@ namespace BP_LKPortal
 
         private void Wb_NewWindow(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            HtmlElement link = wb.Document.ActiveElement;
-            //String url = link.GetAttribute("href");
-            try
-            {
-                if (link.InnerHtml.ToString().Contains("Período de Gozo"))
-                {
-                    wb.Navigate("rhnet/Corpore.Net/Main.aspx?ActionID=FopSugFerActionWeb&NewRecord=True&SelectedMenuIDKey=SugestaoFeriasRHMC&ShowMode=0&DetailIndex=-1&TransactionID=-1");
-                }
-                if (Variaveis.Link == 1)                    
-                {
-                    wb.Navigate("http://bphmgrm01:8080/RM/Rhu-BancoTalentos/#/RM/Rhu-BancoTalentos/home");
-                    Variaveis.Link = 0;
-                }
-            }
-            catch { }
-            e.Cancel = true;
         }
 
         public void extendedWebBrowser()
         {
-            this.ScriptErrorsSuppressed = true;
-
-            FieldInfo field = typeof(WebBrowser).GetField("_axIWebBrowser2", BindingFlags.Instance | BindingFlags.NonPublic);
-            if (field != null)
-            {
-                object axIWebBrowser2 = field.GetValue(this);
-                axIWebBrowser2.GetType().InvokeMember("Silent", BindingFlags.SetProperty, null, axIWebBrowser2, new object[] { true });
-            }
         }
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
@@ -188,11 +165,10 @@ namespace BP_LKPortal
                     }
 
                 }
-            }
-            
-
+            }            
             wb.DocumentCompleted -= webBrowser1_DocumentCompleted;
             this.panel1.Controls.Remove(wb);
+            
         }
 
         private void WebBrowser_Load(object sender, EventArgs e)
@@ -222,10 +198,10 @@ namespace BP_LKPortal
             try
             {
                 //System.Threading.Thread.Sleep(1100);
-                ((Timer)sender).Stop();                
-                //Clipboard.SetText(fullPath + @"imagem"+Variaveis.i+".jpg");
-                SendKeys.SendWait(fullPath + Variaveis.filecaptura);
-                SendKeys.SendWait("{ENTER}");
+                ((Timer)sender).Stop();
+                //Clipboard.SetText(fullPath + @"imagem"+Variaveis.i+".jpg");                
+                SendKeys.Send(fullPath + Variaveis.filecaptura);
+                SendKeys.Send("{ENTER}");
                 Variaveis.lastcapture = DateTime.Now.AddSeconds(-10);
                 DTLastcapture = DateTime.Now.AddSeconds(1.3);
             }
@@ -369,6 +345,13 @@ namespace BP_LKPortal
 
         private void label1_Click(object sender, EventArgs e)
         {
+            wb.Navigate("https://bp.topdesk.net/tas/public/logout");
+            Fechar.Start();
+        }
+
+        private void Fechar_Tick(object sender, EventArgs e)
+        {
+            ((Timer)sender).Stop();
             this.Close();
         }
     }

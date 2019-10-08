@@ -9,13 +9,14 @@ using System.Windows.Forms;
 namespace BP_LKPortal
 {
     static class Program
-    {
-        private static TotemTools.Input.MouseInput mouse1;
+    {        
         private static IntPtr _hookID = IntPtr.Zero;
         private static readonly TotemTools.InterceptKeys.LowLevelKeyboardProc _proc = HookCallback;
         [STAThread]
         static void Main(string[] args)
         {
+            TotemTools.Input.MouseInput mouse = new TotemTools.Input.MouseInput();
+            mouse.MouseMoved += Mouse1_MouseMoved; 
             TotensUtils.FileAssociations.EnsureAssociationsSet(".pdf", "Totem BP", "Clique em abrir!");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -46,7 +47,7 @@ namespace BP_LKPortal
             {
                 Application.Run(new Main());
             }
-        }
+        }               
         private static void openpdf(string file)
         {
             try
@@ -102,10 +103,7 @@ namespace BP_LKPortal
                     return (IntPtr)1;
                 }
             }
-
             return TotemTools.InterceptKeys.CallNextHookEx(_hookID, nCode, wParam, lParam);
-
-
         }
     }
 }

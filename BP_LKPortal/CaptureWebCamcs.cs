@@ -22,7 +22,6 @@ namespace BP_LKPortal
         private bool _bZoomed = false;
         private double _fZoomValue = 1.0;
         public Bitmap _latestFrame;
-
         int timeout = 30;
         DateTime start = DateTime.Now;
         private NormalizedRect _MouseSelectionRect = new NormalizedRect(0, 0, 0, 0);
@@ -56,8 +55,6 @@ namespace BP_LKPortal
 
         private void CaptureWebCamcs_Load(object sender, EventArgs e)
         {
-
-
             try
             {
                 setmaxres(camera_idx);
@@ -69,9 +66,7 @@ namespace BP_LKPortal
             timer.Start();
         }
         private void setmaxres(int CamIdx)
-
         {
-
             _CameraChoice.UpdateDeviceList();
 
             SetCamera(_CameraChoice.Devices[CamIdx].Mon,
@@ -89,11 +84,7 @@ namespace BP_LKPortal
                 {
                     res = r;
                 }
-            }
-            //timer1.Enabled = true;
-            // SetCamera(cameraControl.Moniker, res);
-            // System.Threading.Thread.Sleep(1000);
-
+            }            
         }
         private void set_camera_par(int CamIdx, WebcamConfig wc)
         {
@@ -203,25 +194,13 @@ namespace BP_LKPortal
 
             if (!cameraControl.CameraCreated)
                 return;
-
-            // If you are using Direct3D surface overlay
-            // (see documentation about rebuild of library for it)
-            //cameraControl.UseGDI = false;
-
             cameraControl.MixerEnabled = true;
-
             cameraControl.OutputVideoSizeChanged += Camera_OutputVideoSizeChanged;
-
             UpdateCameraBitmap();
-
         }
         private void Camera_OutputVideoSizeChanged(object sender, EventArgs e)
         {
-
             UpdateCameraBitmap();
-
-            // Place Zoom button in correct place on form
-
         }
 
         private void UpdateCameraBitmap()
@@ -250,11 +229,9 @@ namespace BP_LKPortal
             if (w <= 0 || h <= 0)
                 return null;
 
-            // Create RGB bitmap
             Bitmap bmp = new Bitmap(w, h, PixelFormat.Format24bppRgb);
-            Graphics g = Graphics.FromImage(bmp);
 
-            // configure antialiased drawing or not
+            Graphics g = Graphics.FromImage(bmp);
             if (useAntiAlias)
             {
                 g.SmoothingMode = SmoothingMode.AntiAlias;
@@ -286,16 +263,11 @@ namespace BP_LKPortal
                         (int)((_MouseSelectionRect.right - _MouseSelectionRect.left) * w),
                         (int)((_MouseSelectionRect.bottom - _MouseSelectionRect.top) * h)
                     );
-
-
-
                 g.DrawLine(pen, rect.Left - 5, rect.Top, rect.Right + 5, rect.Top);
                 g.DrawLine(pen, rect.Left - 5, rect.Bottom, rect.Right + 5, rect.Bottom);
                 g.DrawLine(pen, rect.Left, rect.Top - 5, rect.Left, rect.Bottom + 5);
                 g.DrawLine(pen, rect.Right, rect.Top - 5, rect.Right, rect.Bottom + 5);
-
                 pen.Dispose();
-
             }
 
             // Draw zoom text if needed
@@ -303,20 +275,13 @@ namespace BP_LKPortal
             {
                 Font font = new Font("Tahoma", 16);
                 Brush textColorKeyed = new SolidBrush(Color.DarkBlue);
-
                 g.DrawString("Zoom: " + Math.Round(_fZoomValue, 1).ToString("0.0") + "x", font, textColorKeyed, 4, 4);
-
                 font.Dispose();
                 textColorKeyed.Dispose();
             }
-
-            // Draw text logo for example
             {
                 Font font = new Font("Tahoma", 16);
                 Brush textColorKeyed = new SolidBrush(Color.Black);
-
-                //g.DrawString("Captura de SGA", font, textColorKeyed, 4, h - 30);
-
             }
 
 
@@ -367,73 +332,10 @@ namespace BP_LKPortal
             }
             return true;
         }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            if (start_captura.AddSeconds(30) < DateTime.Now)
-            {
-                timer.Stop();
-                if (!cameraControl.CameraCreated)
-                { this.Close(); }
-                bitmap = cameraControl.SnapshotOutputImage();
-                cameraControl.CloseCamera();
-                this.Close();
-            }
-            if ((start.AddSeconds(timeout) - DateTime.Now).Seconds < 0 && IsRead)
-            {
-                timer.Stop();
-                if (!cameraControl.CameraCreated)
-                { this.Close(); }
-                bitmap = cameraControl.SnapshotOutputImage();
-                cameraControl.CloseCamera();
-                this.Close();
-            }
-            else
-            {
-                //    if (isRead == false)
-                //    {
-                //        start = DateTime.Now;
-                //        if (!cameraControl.CameraCreated)
-                //        {
-                //            return;
-                //        }
-                //        try
-                //        {
-                //            using (Bitmap bitmap = cameraControl.SnapshotSourceImage())
-                //            {
-                //                BitmapData bmd = bitmap.LockBits(new Rectangle(0, 0, bitmap.Width, bitmap.Height), ImageLockMode.ReadOnly, bitmap.PixelFormat);
-                //                if (IsRead != true)
-                //                {
-                //                    IsRead = true;
-                //                }
-                //            }
-                //        }
-                //        catch (Exception) { }
-                //        lbl_timeout.Text = string.Format("Iniciando scanner de documentos");
-                //    }
-                //    else
-                //    {
-                long t_rem = ((start.AddSeconds(timeout) - DateTime.Now).Ticks / 10000);
-                if (t_rem > 0)
-                {
-                    lbl_timeout.Text = string.Format("Captura em {0} segundo{1}", (int)(start.AddSeconds(timeout) - DateTime.Now).TotalSeconds,
-                                                ((start.AddSeconds(timeout) - DateTime.Now).Seconds) > 1 ? "s" : "");
-                    progressBar1.Value = (int)(t_rem);
-                }
-
-
-            }
-            //}
-
-
-
-        }
-
         private void Button1_Click(object sender, EventArgs e)
         {
             start_captura = DateTime.Now.AddSeconds(-29);
         }
-
       
         private void timer_Tick(object sender, EventArgs e)
         {
@@ -456,30 +358,7 @@ namespace BP_LKPortal
                 this.Close();
             }
             else
-            {
-                //    if (isRead == false)
-                //    {
-                //        start = DateTime.Now;
-                //        if (!cameraControl.CameraCreated)
-                //        {
-                //            return;
-                //        }
-                //        try
-                //        {
-                //            using (Bitmap bitmap = cameraControl.SnapshotSourceImage())
-                //            {
-                //                BitmapData bmd = bitmap.LockBits(new Rectangle(0, 0, bitmap.Width, bitmap.Height), ImageLockMode.ReadOnly, bitmap.PixelFormat);
-                //                if (IsRead != true)
-                //                {
-                //                    IsRead = true;
-                //                }
-                //            }
-                //        }
-                //        catch (Exception) { }
-                //        lbl_timeout.Text = string.Format("Iniciando scanner de documentos");
-                //    }
-                //    else
-                //    {
+            {               
                 long t_rem = ((start.AddSeconds(timeout) - DateTime.Now).Ticks / 10000);
                 if (t_rem > 0)
                 {
@@ -490,7 +369,7 @@ namespace BP_LKPortal
 
 
             }
-            //}
+            //}  
         }
     }
 }

@@ -1,13 +1,15 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Diagnostics;
 using System.Drawing;
 
 namespace BP_LKPortal
 {
     public class Variaveis
     {
-
+        public static close cl = new close();
         public static CaptureWebCamcs cw;
+        internal static Process p;
         public static string doc;
         public static string MachineName;
         public static int PdfPages;
@@ -23,9 +25,9 @@ namespace BP_LKPortal
         
         internal static string url1 = "http://rhnet";
         internal static string url2 = "http://portalrh/apdata/";
+        //internal static string url2 = "http://172.20.6.203:8080/web/app/RH/PortalMeuRH/#/login";
         internal static string url3 = "https://bp.topdesk.net/tas/public/login/form";
-        internal static string url4 = "http://alterarsenha/";
-        
+        internal static string url4 = "http://alterarsenha/";        
 
         public static bool CamEnable = false;
         private static int capture = 1; //1 color 0 bw

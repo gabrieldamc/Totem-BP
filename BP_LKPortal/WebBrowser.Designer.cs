@@ -43,6 +43,8 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.Fechar = new System.Windows.Forms.Timer(this.components);
             this.adrBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,6 +105,7 @@
             this.adrBarTextBox.DropDownHeight = 300;
             this.adrBarTextBox.Enabled = false;
             this.adrBarTextBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.adrBarTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.adrBarTextBox.IntegralHeight = false;
             this.adrBarTextBox.Name = "adrBarTextBox";
             this.adrBarTextBox.Size = new System.Drawing.Size(532, 47);
@@ -133,12 +136,12 @@
             // 
             // Timer_capture
             // 
-            this.Timer_capture.Interval = 700;
+            this.Timer_capture.Interval = 1;
             this.Timer_capture.Tick += new System.EventHandler(this.Timer_capture_Tick);
             // 
             // Timer_cancel
             // 
-            this.Timer_cancel.Interval = 1500;
+            this.Timer_cancel.Interval = 800;
             this.Timer_cancel.Tick += new System.EventHandler(this.Timer_cancel_Tick);
             // 
             // timer1
@@ -167,6 +170,11 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "";
             this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // Fechar
+            // 
+            this.Fechar.Interval = 700;
+            this.Fechar.Tick += new System.EventHandler(this.Fechar_Tick);
             // 
             // WebBrowser
             // 
@@ -206,5 +214,7 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Timer Fechar;
     }
 }

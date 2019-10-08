@@ -1,5 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Diagnostics;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace BP_LKPortal
@@ -9,6 +11,29 @@ namespace BP_LKPortal
         public Main()
         {
             InitializeComponent();
+            var tr = new System.Threading.Thread(() =>
+            {
+                try
+                {
+                    while (true)
+                    {
+                        Process[] chromeInstances = Process.GetProcessesByName("chrome");
+                        if (chromeInstances.Length > 0)
+                        {
+                            Variaveis.cl.Invoke(new MethodInvoker(Variaveis.cl.Show));
+                        }
+                        else
+                        {
+                            Variaveis.cl.Invoke(new MethodInvoker(Variaveis.cl.Hide));
+                        }
+                        System.Threading.Thread.Sleep(500);
+                    }
+                }
+                catch { }
+
+            });
+            tr.SetApartmentState(ApartmentState.STA);
+            tr.Start();
             this.BackgroundImage = Variaveis.get_bk_image();
             Variaveis.wb_1.ScriptErrorsSuppressed = true;
             Variaveis.wb_2.ScriptErrorsSuppressed = true;
@@ -17,6 +42,7 @@ namespace BP_LKPortal
             ini_wb();
             Digi_Clock.Start();            
         }
+
         private void ini_wb()
         {
             Variaveis.wb_1.Dock = DockStyle.Fill;
@@ -93,20 +119,24 @@ namespace BP_LKPortal
                 Variaveis.wb_2.Dock = DockStyle.Fill;
                 Variaveis.wb_2.Navigate(new Uri(Variaveis.url2));
                 Variaveis.wb_2.ScriptErrorsSuppressed = true;
-            }
+            }            
         }
+       
 
         private void button1_Click(object sender, EventArgs e)
+        {            
+            start();
+        }
+        private void start()
         {
-            using (WebBrowser novo = new WebBrowser(Variaveis.wb_1))
-            {
-                novo.ShowDialog();
-                Variaveis.wb_1.Dispose();
-                Variaveis.wb_1 = new System.Windows.Forms.WebBrowser();
-                Variaveis.wb_1.Dock = DockStyle.Fill;
-                Variaveis.wb_1.Navigate(new Uri(Variaveis.url1));
-                Variaveis.wb_1.ScriptErrorsSuppressed = true;
-            }
+            
+            //Variaveis.cl.Hide();
+            ProcessStartInfo startInfo = new ProcessStartInfo(@"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe");
+            startInfo.Arguments = "--incognito -kiosk -fullscreen http://rhnet";
+            startInfo.WindowStyle = ProcessWindowStyle.Maximized;
+            Variaveis.p = Process.Start(startInfo);
+            Thread.Sleep(2000); // Allow the process to open it's window
+            Variaveis.cl.Show();
         }
 
         private void label1_Click(object sender, EventArgs e)
