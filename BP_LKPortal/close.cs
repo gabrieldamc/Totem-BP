@@ -16,12 +16,13 @@ namespace BP_LKPortal
         public close()
         {
             InitializeComponent();
+            timer1.Start();
             this.StartPosition = FormStartPosition.Manual;
             foreach (var scrn in Screen.AllScreens)
             {
                 if (scrn.Bounds.Contains(this.Location))
                 {
-                    this.Location = new Point(scrn.Bounds.Right - this.Width, scrn.Bounds.Top);
+                    this.Location = new Point(scrn.Bounds.Right - this.Width, scrn.Bounds.Bottom - this.Height);
                     return;
                 }
             }
@@ -34,6 +35,19 @@ namespace BP_LKPortal
                 try { o.Kill(); } catch { }
             }
             Variaveis.cl.Hide();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if ((DateTime.Now - Variaveis.PortalTimeout).TotalSeconds > 60)
+            {
+                Process[] chromeInstances = Process.GetProcessesByName("chrome");
+                foreach (var o in chromeInstances)
+                {
+                    try { o.Kill(); } catch { }
+                }
+                Variaveis.cl.Hide();
+            }
         }
     }
 }

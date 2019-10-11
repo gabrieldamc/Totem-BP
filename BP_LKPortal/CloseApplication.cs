@@ -29,13 +29,13 @@ namespace BP_LKPortal
             if (textBox1.Text == "2019")
             {
                 ReleaseKeyboardHook();
-                EnableButton();
+                EnableButton();                
                 System.Windows.Forms.Application.ExitThread();
             }
             if (textBox1.Text == "9798")
             {
                 ReleaseKeyboardHook();
-                EnableButton();
+                EnableButton();                
                 System.Windows.Forms.Application.ExitThread();
             }
         }

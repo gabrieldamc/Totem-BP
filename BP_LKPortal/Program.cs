@@ -10,13 +10,14 @@ namespace BP_LKPortal
 {
     static class Program
     {        
-        private static IntPtr _hookID = IntPtr.Zero;
+        private static IntPtr _hookID = IntPtr.Zero;        
         private static readonly TotemTools.InterceptKeys.LowLevelKeyboardProc _proc = HookCallback;
         [STAThread]
         static void Main(string[] args)
         {
             TotemTools.Input.MouseInput mouse = new TotemTools.Input.MouseInput();
             mouse.MouseMoved += Mouse1_MouseMoved; 
+            
             TotensUtils.FileAssociations.EnsureAssociationsSet(".pdf", "Totem BP", "Clique em abrir!");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

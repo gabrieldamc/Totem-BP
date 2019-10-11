@@ -44,7 +44,7 @@ namespace BP_LKPortal
         }
 
         private void ini_wb()
-        {
+        {            
             Variaveis.wb_1.Dock = DockStyle.Fill;
             Variaveis.wb_2.Dock = DockStyle.Fill;
             Variaveis.wb_3.Dock = DockStyle.Fill;
@@ -53,9 +53,7 @@ namespace BP_LKPortal
             Variaveis.wb_2.Navigate(new Uri(Variaveis.url2));
             Variaveis.wb_3.Navigate(new Uri(Variaveis.url3));
             Variaveis.wb_4.Navigate(new Uri(Variaveis.url4));
-            Variaveis.wb_2.ScriptErrorsSuppressed = true;
-            //KillCtrlAltDelete();
-            
+            Variaveis.wb_2.ScriptErrorsSuppressed = true;                        
         }
 
         private void Btn_Url3_Click(object sender, EventArgs e)

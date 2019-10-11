@@ -140,7 +140,7 @@ namespace BP_LKPortal
             }
             catch { }
 
-            Variaveis.PortalTimeout = DateTime.Now;
+            //Variaveis.PortalTimeout = DateTime.Now;
 
         }
         private void toolStripButton4_Click(object sender, EventArgs e)
@@ -189,7 +189,7 @@ namespace BP_LKPortal
             }
             catch { }
             
-            Variaveis.PortalTimeout = DateTime.Now;
+            //Variaveis.PortalTimeout = DateTime.Now;
 
         }
 
@@ -210,7 +210,7 @@ namespace BP_LKPortal
 
         private void Enviar_Para_Home_Tick(object sender, EventArgs e)
         {
-            if ((DateTime.Now - Variaveis.PortalTimeout).TotalSeconds > 120)
+            if ((DateTime.Now - Variaveis.PortalTimeout).TotalSeconds > 60)
             {
                 this.Close();
                 
