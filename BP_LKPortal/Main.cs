@@ -92,6 +92,17 @@ namespace BP_LKPortal
             {
 
             }
+            if ((DateTime.Now - Variaveis.PortalTimeout).TotalSeconds > 60)
+            {
+                Process[] chromeInstances = Process.GetProcessesByName("chrome");
+                foreach (var o in chromeInstances)
+                {
+
+                    try { o.Kill(); } catch { }
+
+                    Variaveis.cl.Hide();
+                }
+            }
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -127,7 +138,7 @@ namespace BP_LKPortal
         }
         private void start()
         {
-            
+        //
             //Variaveis.cl.Hide();
             ProcessStartInfo startInfo = new ProcessStartInfo(@"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe");
             startInfo.Arguments = "--incognito -kiosk -fullscreen http://rhnet";

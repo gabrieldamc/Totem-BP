@@ -12,11 +12,10 @@ using System.Windows.Forms;
 namespace BP_LKPortal
 {
     public partial class close : Form
-    {
+    {       
         public close()
-        {
-            InitializeComponent();
-            timer1.Start();
+        { 
+            InitializeComponent();            
             this.StartPosition = FormStartPosition.Manual;
             foreach (var scrn in Screen.AllScreens)
             {
@@ -26,7 +25,9 @@ namespace BP_LKPortal
                     return;
                 }
             }
+            
         }
+          
         private void label1_Click_1(object sender, EventArgs e)
         {
             Process[] chromeInstances = Process.GetProcessesByName("chrome");
@@ -36,18 +37,10 @@ namespace BP_LKPortal
             }
             Variaveis.cl.Hide();
         }
-
+      
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if ((DateTime.Now - Variaveis.PortalTimeout).TotalSeconds > 60)
-            {
-                Process[] chromeInstances = Process.GetProcessesByName("chrome");
-                foreach (var o in chromeInstances)
-                {
-                    try { o.Kill(); } catch { }
-                }
-                Variaveis.cl.Hide();
-            }
-        }
+            
+        }       
     }
 }

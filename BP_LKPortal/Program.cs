@@ -10,14 +10,13 @@ namespace BP_LKPortal
 {
     static class Program
     {        
-        private static IntPtr _hookID = IntPtr.Zero;        
+        private static IntPtr _hookID = IntPtr.Zero;  
         private static readonly TotemTools.InterceptKeys.LowLevelKeyboardProc _proc = HookCallback;
         [STAThread]
         static void Main(string[] args)
-        {
+        {           
             TotemTools.Input.MouseInput mouse = new TotemTools.Input.MouseInput();
-            mouse.MouseMoved += Mouse1_MouseMoved; 
-            
+            mouse.MouseMoved += Mouse1_MouseMoved;          
             TotensUtils.FileAssociations.EnsureAssociationsSet(".pdf", "Totem BP", "Clique em abrir!");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -48,7 +47,7 @@ namespace BP_LKPortal
             {
                 Application.Run(new Main());
             }
-        }               
+        }      
         private static void openpdf(string file)
         {
             try
@@ -86,7 +85,7 @@ namespace BP_LKPortal
         private static void Mouse1_MouseMoved(object sender, EventArgs e)
         {
             Variaveis.PortalTimeout = DateTime.Now;
-        }
+        }     
         private static IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
         {
 

@@ -2,6 +2,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace BP_LKPortal
 {
@@ -9,7 +10,7 @@ namespace BP_LKPortal
     {
         public static close cl = new close();
         public static CaptureWebCamcs cw;
-        internal static Process p;
+        internal static Process p;        
         public static string doc;
         public static string MachineName;
         public static int PdfPages;
@@ -37,7 +38,7 @@ namespace BP_LKPortal
         public static string PrintUrl(string pages)
         {
             return "https://remote.autoatendimento.srv.br/bp/?sendpages&cliente=bp&device=" + Environment.MachineName + "&page=" + pages;
-        }
+        } 
         public static bool CapturaImagemNew(int camera = 0)
         {
             if (Variaveis.lastcapture.AddSeconds(10) > DateTime.Now)
@@ -45,7 +46,6 @@ namespace BP_LKPortal
                 return false;
             }
             Variaveis.lastcapture = DateTime.Now;
-
             try
             {
                 
@@ -69,8 +69,7 @@ namespace BP_LKPortal
             {
                 return false;
             }
-        }
-
+        }       
         public static Bitmap captura_imagem_new(int camera_idx, int Width, int Height)
         {
             Variaveis.cw = new CaptureWebCamcs(camera_idx, 30);

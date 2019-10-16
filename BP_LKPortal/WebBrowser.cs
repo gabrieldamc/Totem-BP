@@ -212,9 +212,8 @@ namespace BP_LKPortal
         {
             if ((DateTime.Now - Variaveis.PortalTimeout).TotalSeconds > 60)
             {
-                this.Close();
-                
-                Variaveis.PortalTimeout = DateTime.Now;
+                this.Close();                
+                //Variaveis.PortalTimeout = DateTime.Now;
                 var listaDeImagens = Directory.GetFiles(fullPath);
                 foreach (string filename in listaDeImagens)
                 {
