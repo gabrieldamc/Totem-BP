@@ -91,18 +91,7 @@ namespace BP_LKPortal
             catch
             {
 
-            }
-            if ((DateTime.Now - Variaveis.PortalTimeout).TotalSeconds > 60)
-            {
-                Process[] chromeInstances = Process.GetProcessesByName("chrome");
-                foreach (var o in chromeInstances)
-                {
-
-                    try { o.Kill(); } catch { }
-
-                    Variaveis.cl.Hide();
-                }
-            }
+            }            
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

@@ -50,8 +50,6 @@ namespace BP_LKPortal
             extendedWebBrowser();
             SetBrowserFeatureControl();
             adrBarTextBox.Text = (wb.Url != null) ? wb.Url.ToString() : "";
-            
-
         }
 
         private void Wb_NewWindow(object sender, System.ComponentModel.CancelEventArgs e)

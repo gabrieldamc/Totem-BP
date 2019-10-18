@@ -15,7 +15,8 @@ namespace BP_LKPortal
     {       
         public close()
         { 
-            InitializeComponent();            
+            InitializeComponent();
+            timer1.Start();
             this.StartPosition = FormStartPosition.Manual;
             foreach (var scrn in Screen.AllScreens)
             {
@@ -27,7 +28,6 @@ namespace BP_LKPortal
             }
             
         }
-          
         private void label1_Click_1(object sender, EventArgs e)
         {
             Process[] chromeInstances = Process.GetProcessesByName("chrome");
@@ -39,8 +39,18 @@ namespace BP_LKPortal
         }
       
         private void timer1_Tick(object sender, EventArgs e)
-        {
-            
+        {            
+            if ((DateTime.Now - Variaveis.PortalTimeout).TotalSeconds > 300)
+            {
+                Process[] chromeInstances = Process.GetProcessesByName("chrome");
+                foreach (var o in chromeInstances)
+                {
+
+                    try { o.Kill(); } catch { }
+
+                    Variaveis.cl.Hide();
+                }
+            }
         }       
     }
 }

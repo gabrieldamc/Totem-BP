@@ -47,7 +47,7 @@ namespace BP_LKPortal
             {
                 Application.Run(new Main());
             }
-        }      
+        }
         private static void openpdf(string file)
         {
             try
@@ -81,7 +81,7 @@ namespace BP_LKPortal
 
             }
             System.Environment.Exit(0);
-        }
+        }   
         private static void Mouse1_MouseMoved(object sender, EventArgs e)
         {
             Variaveis.PortalTimeout = DateTime.Now;
