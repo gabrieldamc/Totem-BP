@@ -15,6 +15,26 @@ namespace BP_LKPortal
         [STAThread]
         static void Main(string[] args)
         {           
+            try
+            {
+                if(System.IO.File.Exists(AppDomain.CurrentDomain.BaseDirectory + "camidx.idx"))
+                {
+                    Variaveis.idx_doccam = Convert.ToInt32(System.IO.File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + "camidx.idx"));
+                }
+                else
+                {
+                    System.IO.File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + "camidx.idx", "0");
+                }
+            }
+            catch
+            {
+                if (System.IO.File.Exists(AppDomain.CurrentDomain.BaseDirectory + "camidx.idx"))
+                {
+                    System.IO.File.Delete(AppDomain.CurrentDomain.BaseDirectory + "camidx.idx");
+                }
+                System.IO.File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + "camidx.idx", "0");
+            }
+
             TotemTools.Input.MouseInput mouse = new TotemTools.Input.MouseInput();
             mouse.MouseMoved += Mouse1_MouseMoved;          
             TotensUtils.FileAssociations.EnsureAssociationsSet(".pdf", "Totem BP", "Clique em abrir!");

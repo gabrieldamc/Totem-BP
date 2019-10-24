@@ -125,7 +125,7 @@ namespace BP_LKPortal
                 if (aaa.InnerText == "Anexar arquivo" && DTLastcapture < DateTime.Now)
                 {
 
-                    if (Variaveis.CapturaImagemNew(1))
+                    if (Variaveis.CapturaImagemNew(Variaveis.idx_doccam))
                     {
                         Timer_capture.Start();
                     }
