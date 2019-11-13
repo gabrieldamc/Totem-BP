@@ -39,7 +39,7 @@ namespace BP_LKPortal
             mouse.MouseMoved += Mouse1_MouseMoved;          
             TotensUtils.FileAssociations.EnsureAssociationsSet(".pdf", "Totem BP", "Clique em abrir!");
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+            // Application.SetCompatibleTextRenderingDefault(false);
             try
             {
                 string name = System.Reflection.Assembly.GetEntryAssembly().GetName().Name;

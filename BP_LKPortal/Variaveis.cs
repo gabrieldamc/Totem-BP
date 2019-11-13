@@ -8,7 +8,7 @@ namespace BP_LKPortal
 {
     public class Variaveis
     {
-        public static int idx_doccam = 0;
+        public static int idx_doccam;
         public static close cl = new close();
         public static CaptureWebCamcs cw;
         internal static Process p;        
